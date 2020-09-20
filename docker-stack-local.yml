@@ -1,0 +1,36 @@
+version: "3.4"
+
+services:
+  wordpress:
+    image: registry.s.dnam.dk/ea-wp:latest
+    ports:
+      - target: 80
+        published: 8080
+        protocol: tcp
+        mode: host
+    environment:
+      WORDPRESS_DB_PASSWORD: example
+      WORDPRESS_DB_HOST: db
+    deploy:
+      resources:
+        limits:
+          memory: 128m
+    networks:
+      frontend-net:
+      wp-net:
+
+  db:
+    image: registry.s.dnam.dk/ea-db:latest
+    deploy:
+      resources:
+        limits:
+          memory: 50m
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    networks:
+      wp-net:
+
+networks:
+  frontend-net:
+  wp-net:
+

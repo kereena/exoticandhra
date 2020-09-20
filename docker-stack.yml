@@ -1,0 +1,39 @@
+version: "3.4"
+
+services:
+  wordpress:
+    image: registry.s.dnam.dk/ea-wp:latest
+    environment:
+      WORDPRESS_DB_PASSWORD: example
+      WORDPRESS_DB_HOST: db
+    deploy:
+      resources:
+        limits:
+          memory: 128m
+      labels:
+        - "traefik.enable=true"
+        - "traefik.port=80"
+        - "traefik.frontend.rule=Host:exoticandhra.com"
+        - "traefik.backend=ea-http"
+        - "traefik.docker.network=proxy-net"
+    networks:
+      proxy-net:
+      wp-net:
+
+  db:
+    image: registry.s.dnam.dk/ea-db:latest
+    deploy:
+      resources:
+        limits:
+          memory: 50m
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    networks:
+      wp-net:
+
+networks:
+  proxy-net:
+    external:
+      name: proxy-net
+  wp-net:
+

@@ -1,0 +1,21 @@
+
+body {
+    background-color: #f7f6ee;
+	 font-size: 18px;
+}
+
+
+
+.button {
+    background-color: #008080;  /* #4CAF50;(light green) ,  #6495ED;(light blue)  */
+    border: none;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+	border-radius: 8px;
+}
