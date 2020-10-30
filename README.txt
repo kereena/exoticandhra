@@ -10,7 +10,7 @@ How to install new version of web-site:
 
 4) Open Terminal
 
-5) cd "~/Dropbox/Shared Kereena and Soren/wp"
+5) Choose the direcory"
 
 6) make all
 
